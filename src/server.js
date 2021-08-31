@@ -5,7 +5,7 @@ const express = require('express');
 const app = express();
 
 // PARA IMPORTAR O dataBase,js
-const dataBase = require('./dataBase.js');
+const dataBase = require('./database/dataBaseMysql');
 // PARA IMPORTAR O  Body-parser 
 const bodyParser = require('body-parser');
 
@@ -25,8 +25,8 @@ app.get('/pokemons/:id', (req, res) =>
 );
 
 // REQUISIÇÃO POST PARA SALVAR UM POKEMON
-app.post('/pokemons', (req, res) => {
-    const pokemon = dataBase.salvarPokemons({
+app.post('/pokemons', async (req, res) => {
+    const pokemon = await dataBase.salvarPokemons({
         nome: req.body.nome,
         tipo: req.body.tipo,
         fraqueza: req.body.fraqueza,
@@ -57,7 +57,7 @@ app.delete('/pokemons/:id', (req, res) => {
 //REQUISIÇAO POST DA BATALHA
 app.post('/batalha', (req, res) => {
     res.send(dataBase.batalhaPokemon(req.body.id1, req.body.id2))
-})
+});
 
 //REQUISIÇÃO PUT PARA ALIMENTAR POKEMON
 //app.put('/pokemons/:id', (req, res) => {
@@ -67,5 +67,19 @@ app.post('/batalha', (req, res) => {
 //
 //    res.send(pokemon)
 //});
+/*app.put('/curar/', (req, res) => {
+    const pokemon = dataBase.curarPokemon(req.params.id, {
+        nome: req.body.nome,
+        tipo: req.body.tipo,
+        fraqueza: req.body.fraqueza,
+        resistencia: req.body.resistencia,
+        hp: parseInt(req.params.hp),
+        id: req.body.id
+    })
+
+    res.send(pokemon)
+});*/
+
+
 // NUMERO DA PORTA PARA O BROWSER
 app.listen(3003);
