@@ -5,8 +5,8 @@ module.exports = {
   connection: {
     host: '127.0.0.1',
     user: 'root',
-    password: 'masterkey',
-    database: 'capacitta_bd.pokemons'
+    password: 'Masterkey',
+    database: 'pokemon'
   },
   debug: true
 

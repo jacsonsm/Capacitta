@@ -19,7 +19,7 @@ async function salvarPokemons(pokemon) {
         tipo: 'Eletrico'
     }
     */
-    const queryInsertPokemon = `INSERT INTO capacitta_bd.pokemons( nome, tipo) VALUES ('${pokemon.nome}','${pokemon.tipo}')`
+    const queryInsertPokemon = `INSERT INTO pokemons( nome, tipo, origem) VALUES ('${pokemon.nome}','${pokemon.tipo}', '${pokemon.origem}')`
 
     const result = await databaseConnection.raw(queryInsertPokemon)
 
@@ -29,7 +29,7 @@ async function salvarPokemons(pokemon) {
         return {
             nome: pokemon.nome,
             tipo: pokemon.tipo,
-            //origem: pokemon.origem,
+            origem: pokemon.origem,
             //resistencia: pokemon.resistencia,
             //fraqueza: pokemon.fraqueza,
             //hp: pokemon.hp,
