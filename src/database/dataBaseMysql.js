@@ -19,7 +19,7 @@ async function salvarPokemons(pokemon) {
         tipo: 'Eletrico'
     }
     */
-    const queryInsertPokemon = `INSERT INTO pokemons( nome, tipo, origem) VALUES ('${pokemon.nome}','${pokemon.tipo}', '${pokemon.origem}')`
+    const queryInsertPokemon = `INSERT INTO pokemons( nome, tipo, origem, resistencia, fraqueza, hp) VALUES ('${pokemon.nome}','${pokemon.tipo}', '${pokemon.origem}', '${pokemon.resistencia}','${pokemon.fraqueza}', '${pokemon.hp}')`
 
     const result = await databaseConnection.raw(queryInsertPokemon)
 
@@ -30,9 +30,9 @@ async function salvarPokemons(pokemon) {
             nome: pokemon.nome,
             tipo: pokemon.tipo,
             origem: pokemon.origem,
-            //resistencia: pokemon.resistencia,
-            //fraqueza: pokemon.fraqueza,
-            //hp: pokemon.hp,
+            resistencia: pokemon.resistencia,
+            fraqueza: pokemon.fraqueza,
+            hp: pokemon.hp,
             id: result[0].insertId
         }
     } else {
