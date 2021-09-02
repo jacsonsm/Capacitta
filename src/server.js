@@ -5,7 +5,7 @@ const express = require('express');
 const app = express();
 
 // PARA IMPORTAR O dataBase,js
-const dataBase = require('./database/dataBaseMysql');
+const dataBase = require('./database/dataBaseKnex');
 // PARA IMPORTAR O  Body-parser 
 const bodyParser = require('body-parser');
 
@@ -15,14 +15,14 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // REQUISIÇÃO GET 
 // A rota '/pokemons', uma vez acessada devolve como resposta o retorno do método .send()
-app.get('/pokemons', (req, res) =>  //(requisição) / (resposta)
-    res.send(dataBase.mostrarPokemons())
-);
+app.get('/pokemons', async (req, res) => { //(requisição) / (resposta)
+    res.send(await dataBase.mostrarPokemons())
+});
 
 // REQUISIÇÃO GET PARA MOSTRAR UM POKEMON
-app.get('/pokemons/:id', (req, res) =>
-    res.send(dataBase.mostrarPokemon(req.params.id))
-);
+app.get('/pokemons/:id', async (req, res) => {
+    res.send(await dataBase.mostrarPokemon(req.params.id))
+});
 
 // REQUISIÇÃO POST PARA SALVAR UM POKEMON
 app.post('/pokemons', async (req, res) => {
@@ -32,18 +32,18 @@ app.post('/pokemons', async (req, res) => {
         origem: req.body.origem,
         fraqueza: req.body.fraqueza,
         resistencia: req.body.resistencia,
-        hp: 100
+        hp: req.body.hp
     })
     res.send(pokemon)
 });
 // REQUISIÇÃO PUT PARA ATUALIZAR UM POKEMON
-app.put('/pokemons/:id', (req, res) => {
-    const pokemon = dataBase.atualizarPokemon(req.params.id, {
+app.put('/pokemons/:id', async (req, res) => {
+    const pokemon = await dataBase.atualizarPokemon(req.params.id, {
         nome: req.body.nome,
         tipo: req.body.tipo,
         fraqueza: req.body.fraqueza,
         resistencia: req.body.resistencia,
-        hp: 100,
+        hp: req.body.hp,
         id: parseInt(req.params.id)
     })
 
@@ -51,8 +51,8 @@ app.put('/pokemons/:id', (req, res) => {
 });
 
 //REQUISIÇÃO DELETE PARA DELETAR POKEMONS 
-app.delete('/pokemons/:id', (req, res) => {
-    res.send(dataBase.deletarPokemon(req.params.id))
+app.delete('/pokemons/:id', async (req, res) => {
+    res.send(await dataBase.deletarPokemon(req.params.id))
 })
 
 //REQUISIÇAO POST DA BATALHA

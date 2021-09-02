@@ -1,17 +1,7 @@
 //Realizando o require da conexão criada
 const { databaseConnection } = require('./connection')
 
-//O id é incrementado automaticamente (Foi substituido pelo banco de dados)
-/*const sequence = {
-    _id: 1,
-    get id() { return this._id++ }
-}*/
-
-// recebe vazio pois nã há nenhum cadastro no momento
-
-const pokemons = {}
-
-// salva um novo pokemon na base de dados
+// salvar pokemons  na base de dados query builder
 async function salvarPokemons(pokemon) {
     /*
     pokemon=={
@@ -19,21 +9,30 @@ async function salvarPokemons(pokemon) {
         tipo: 'Eletrico'
     }
     */
-    const queryInsertPokemon = `INSERT INTO pokemons( nome, tipo, origem, resistencia, fraqueza, hp) VALUES ('${pokemon.nome}','${pokemon.tipo}', '${pokemon.origem}', '${pokemon.resistencia}','${pokemon.fraqueza}', '${pokemon.hp}')`
+    const insertPokemon = {
+        nome: pokemon.nome,
+        tipo: pokemon.tipo,
+        origem: pokemon.origem,
+        resistencia: pokemon.resistencia,
+        fraqueza: pokemon.fraqueza,
+        hp: pokemon.hp
 
-    const result = await databaseConnection.raw(queryInsertPokemon)
+    }
+    const result = await databaseConnection('pokemons').insert(insertPokemon)
 
     console.log(result)
 
     if (result) {
         return {
-            nome: pokemon.nome,
+
+            ...pokemon,
+            /*nome: pokemon.nome,
             tipo: pokemon.tipo,
             origem: pokemon.origem,
             resistencia: pokemon.resistencia,
             fraqueza: pokemon.fraqueza,
-            hp: pokemon.hp,
-            id: result[0].insertId
+            hp: pokemon.hp,*/
+            id: result[0]
         }
     } else {
         console.error("Erro ao salvar")
@@ -46,27 +45,52 @@ async function salvarPokemons(pokemon) {
 // Mostrar pokemon pesquisando por id 
 async function mostrarPokemon(id) {
 
-    const querySelectPokemon = `SELECT * FROM pokemons WHERE id=${id}`
-
-    const result = await databaseConnection.raw(querySelectPokemon)
+    const result = await databaseConnection('pokemons').where({ id: id })
 
     return result[0]
-
 }
 
 // Mostrar todos os Pokemons cadastrados
 async function mostrarPokemons() {
-    const querySelectPokemon = `SELECT * FROM pokemons`
 
-    const result = await databaseConnection.raw(querySelectPokemon)
+    const result = await databaseConnection('pokemons')
 
-    return result[0]
+    return result
 }
 
 // Atualizar um pokemon salvo
-function atualizarPokemon(id, pokemon) {
-    pokemons[id] = pokemon
-    return pokemon
+async function atualizarPokemon(id, pokemon) {
+    const updatePokemon = {
+        nome: pokemon.nome,
+        tipo: pokemon.tipo,
+        origem: pokemon.origem,
+        resistencia: pokemon.resistencia,
+        fraqueza: pokemon.fraqueza,
+        hp: pokemon.hp
+
+    }
+    const result = await databaseConnection('pokemons').where({ id: id }).update(updatePokemon)
+
+    console.log(result);
+
+    if (result) {
+        return {
+
+            ...pokemon,
+            /*nome: pokemon.nome,
+            tipo: pokemon.tipo,
+            origem: pokemon.origem,
+            resistencia: pokemon.resistencia,
+            fraqueza: pokemon.fraqueza,
+            hp: pokemon.hp,*/
+            id
+        }
+    } else {
+        console.error("Erro ao salvar")
+        return {
+            error: "Erro ao inserir o cadastro"
+        }
+    }
 }
 
 //FUnçao para deletar 
