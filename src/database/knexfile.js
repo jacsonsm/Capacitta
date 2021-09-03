@@ -9,7 +9,6 @@ module.exports = {
     database: 'pokemon'
   },
   debug: true
-
 };
 
 

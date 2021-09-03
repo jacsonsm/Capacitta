@@ -67,15 +67,14 @@ async function atualizarPokemon(id, pokemon) {
         resistencia: pokemon.resistencia,
         fraqueza: pokemon.fraqueza,
         hp: pokemon.hp
-
     }
-    const result = await databaseConnection('pokemons').where({ id: id }).update(updatePokemon)
+
+    const result = await databaseConnection('pokemons').update(updatePokemon).where({ id: id })
 
     console.log(result);
 
     if (result) {
         return {
-
             ...pokemon,
             /*nome: pokemon.nome,
             tipo: pokemon.tipo,
@@ -86,26 +85,22 @@ async function atualizarPokemon(id, pokemon) {
             id
         }
     } else {
-        console.error("Erro ao salvar")
+        console.error("Não foi possível atualizar")
         return {
-            error: "Erro ao inserir o cadastro"
+            error: "Erro ao atualizar o cadastro"
         }
     }
 }
 
 //FUnçao para deletar 
-function deletarPokemon(id) {
-    sequence._id = sequence._id - 1
-    const pokemonDeletado = pokemons[id]
-    pokemons.splice(id, 1)
-    pokemons.forEach(pokemon => {
-        if (pokemon.id > id) {
-            pokemon.id = pokemon.id - 1
-        }
-    })
-    return pokemonDeletado
+async function deletarPokemon(id) {
+
+    const result = await databaseConnection('pokemons').where({ id }).del()
+
+    return result[0]
 }
 
+//Funçao para realizar a batalha entre dois pokemons
 function batalhaPokemon(id1, id2) {
     const superEfetivo = 40
     const efetivo = 20
