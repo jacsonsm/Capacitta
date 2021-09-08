@@ -16,7 +16,7 @@
 
     <nav>
         <ul>
-            <li><a href="./aula5.html" target="_blank">Home</a></li>
+            <li><a href="./aula6.html" target="_blank">Home</a></li>
             <li><a href="https://docs.altu.com.br" target="_blank">ALTU</a></li>
             <li><a href="./contato.html" target="_blank">Contato</a></li>
         </ul>
@@ -25,7 +25,7 @@
 
     <section>
         <main>
-            <form action="">
+            <form method="POST" action="../php/post_servidor.php" autocomplete="on">
                 <fieldset>
                     <legend>Dados Pessoais</legend>
 
@@ -51,6 +51,55 @@
                     <input type="radio" id="ligacao" name="preferencia_contato" value="ligacao">
                     <label for="Ligação">Ligação</label>
                 </fieldset>
+
+                <fieldset>
+                    <legend>Questionário</legend>
+                    <label for="dev">Escolha uma opção</label>
+                    <select name="dev" id="dev" size="1">
+                        <option value="backend">Back-End</option>
+                        <option value="frontend">Front-End</option>
+                        <option value="fullstack">Full-Stack</option>
+                        <option value="devops">Dev-Ops</option>
+                    </select>
+
+                    <textarea name="textarea" id="" cols="10" rows="10"></textarea>
+                    <input type="submit" value="Enviar Formulário">
+
+                </fieldset>
+
+
+
+
+                <footer>
+
+                    <figure>
+                        <img src="../image/cappacitadev.png" width="50%" height="50%" alt="cafe">
+                        <figcaption>Cappacita Dev 2021</figcaption>
+                    </figure>
+                    <section>
+                        <ul>
+                            <li><a href="#">link 1</a></li>
+                            <li><a href="#">link 2</a></li>
+                            <li><a href="#">link 3</a></li>
+                        </ul>
+                    </section>
+                    <!--(section>ul>(li>a)*3)*2-->
+                    <section>
+                        <ul>
+                            <li><a href="#">Úteis 1</a></li>
+                            <li><a href="#">Úteis 2</a></li>
+                            <li><a href="#">Úteis 3</a></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <ul>
+                            <li><a href="#">link 1</a></li>
+                            <li><a href="#">link 2</a></li>
+                            <li><a href="#">link 3</a></li>
+                        </ul>
+                    </section>
+                </footer>
+
             </form>
         </main>
     </section>
