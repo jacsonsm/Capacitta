@@ -1,0 +1,13 @@
+.flex-container{
+    background-color: cadetblue;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.flex-items {
+    background-color: chartreuse;
+    margin: 5px;
+    padding: ]10px;
+    font-size: 30px;
+}
