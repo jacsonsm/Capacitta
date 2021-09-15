@@ -6,26 +6,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-    <header>
+    <header id="header-top">
         <h1>Fale conosco</h1>
         <p>Deixe suas duvidas ou sugestões</p>
     </header>
 
-    <nav>
+    <nav id="nav-top">
         <ul>
-            <li><a href="./" target="_blank">Home</a></li>
+            <li><a href="./index.html" target="_blank">Home</a></li>
             <li><a href="https://docs.altu.com.br" target="_blank">ALTU</a></li>
             <li><a href="./contato.html" target="_blank">Contato</a></li>
         </ul>
-        <div><a href=""></a></div>
+        <div class="usuario"><a href="">Usuário</a></div>
     </nav>
 
-    <section>
+    <section class="section-form">
         <main>
-            <form method="POST" action="../php/post_servidor.php" autocomplete="on">
+            <form method="POST" action="../../php/post_servidor.php" autocomplete="on">
                 <fieldset>
                     <legend>Dados Pessoais</legend>
 
@@ -41,15 +42,15 @@
                     <!--Preferencia de contato-->
 
                     <legend>Preferência de contato</legend>
-
-                    <input type="radio" id="sms" name="preferencia_contato" value="sms">
                     <label for="sms">SMS</label>
+                    <input class="preferencia" type="radio" id="sms" name="preferencia_contato" value="sms">
 
-                    <input type="radio" id="email" name="preferencia_contato" value="email">
                     <label for="email">Email</label>
+                    <input class="preferencia" type="radio" id="email" name="preferencia_contato" value="email">
 
-                    <input type="radio" id="ligacao" name="preferencia_contato" value="ligacao">
                     <label for="Ligação">Ligação</label>
+                    <input class="preferencia" type="radio" id="ligacao" name="preferencia_contato" value="ligacao">
+
                 </fieldset>
 
                 <fieldset>
@@ -73,7 +74,7 @@
                 <footer>
 
                     <figure>
-                        <img src="../image/cappacitadev.png" width="50%" height="50%" alt="cafe">
+                        <img class="logo" src="./image/cappacitadev.png" width="" height="" alt="cafe">
                         <figcaption>Cappacita Dev 2021</figcaption>
                     </figure>
                     <section>
