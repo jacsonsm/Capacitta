@@ -1,0 +1,142 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    max-width: 100%;
+    margin: auto;
+    background-color: white;
+}
+
+#header-top{
+    padding: 16px;
+    text-align: center;
+    background-color: #333;
+}
+
+#nav-top{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #333;
+    width: 100%;
+}
+ul{
+    list-style: none;
+}
+#nav-top a{
+    padding: 1rem 0px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+#nav-top div{
+    display: block;
+    justify-content: center;
+    width: 100;
+}
+#nav-top a:hover{
+    background-color: #ddd;
+    color: black;
+}
+
+.main-section{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.main-home{
+    color: black;
+    width: 100%;
+}
+
+.aside{
+    width: 100%;
+}
+article{
+    margin: 0.2rem 0px;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+}
+
+article h2{
+    margin: 0.1rem 1rem;
+}
+
+article h6{
+    margin: 0.1rem 1rem;
+}
+
+article p{
+    margin: 0.1rem  1rem;
+    text-align: justify;
+}
+
+.card{
+    margin: 0.1rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.card a{
+    padding: 1rem 0px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: #333;
+}
+
+.card a:hover{
+    background-color: #ddd;
+    color: black;
+}
+
+figure{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0px 1rem;
+}
+
+.logo{
+    background-color: #aaa;
+    width: 3.125rem;
+    align-self: center;
+}
+
+figure figcaption{
+    align-self: center;
+    margin: 0.5rem 0px;
+}
+
+.gatinhos{
+    width: 60rem;
+    max-width: 100%;
+    align-self: center;
+}
+
+footer{
+    padding: 1rem 0px;
+    background-color: #ddd;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+footer a{
+    padding: 1rem 0px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: #333;
+}
+
+footer a:hover{
+    background-color: #ddd;
+    color: black;
+}
